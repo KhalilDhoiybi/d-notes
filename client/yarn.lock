@@ -472,6 +472,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"axios@npm:^0.26.0":
+  version: 0.26.0
+  resolution: "axios@npm:0.26.0"
+  dependencies:
+    follow-redirects: ^1.14.8
+  checksum: d7a8b898f4157bedeb2e06c03b16133b91b354c041205bea732ce58b7a21f373d22057b0eea0d482838145ce6ff482b359750d9bcb8dd19d45e3928e3c65c280
+  languageName: node
+  linkType: hard
+
 "balanced-match@npm:^1.0.0":
   version: 1.0.2
   resolution: "balanced-match@npm:1.0.2"
@@ -615,6 +624,7 @@ __metadata:
   resolution: "d-notes@workspace:."
   dependencies:
     "@vitejs/plugin-react": ^1.0.7
+    axios: ^0.26.0
     react: ^17.0.2
     react-dom: ^17.0.2
     vite: ^2.8.0
@@ -903,6 +913,16 @@ __metadata:
   version: 2.0.2
   resolution: "estree-walker@npm:2.0.2"
   checksum: 6151e6f9828abe2259e57f5fd3761335bb0d2ebd76dc1a01048ccee22fabcfef3c0859300f6d83ff0d1927849368775ec5a6d265dde2f6de5a1be1721cd94efc
+  languageName: node
+  linkType: hard
+
+"follow-redirects@npm:^1.14.8":
+  version: 1.14.9
+  resolution: "follow-redirects@npm:1.14.9"
+  peerDependenciesMeta:
+    debug:
+      optional: true
+  checksum: f5982e0eb481818642492d3ca35a86989c98af1128b8e1a62911a3410621bc15d2b079e8170b35b19d3bdee770b73ed431a257ed86195af773771145baa57845
   languageName: node
   linkType: hard
 

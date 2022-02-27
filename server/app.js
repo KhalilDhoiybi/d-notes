@@ -1,6 +1,7 @@
 const express = require('express')
 const mongoose = require('mongoose')
 const Dpage = require('./models/pages.model')
+const cors = require('cors')
 
 // .env init
 require('dotenv').config()
@@ -8,8 +9,9 @@ require('dotenv').config()
 // Database connect
 const db_uri = process.env.URI_DB
 mongoose.connect(db_uri)
-// Express init
+// App init
 const app = express()
+app.use(cors())
 
 // Port init
 const port = process.env.PORT

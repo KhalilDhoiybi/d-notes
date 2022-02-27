@@ -1,7 +1,8 @@
 const express = require('express')
 const mongoose = require('mongoose')
-const Dpage = require('./models/pages.model')
 const cors = require('cors')
+// DpagesModel
+const Dpage = require('./models/pages.model')
 
 // .env init
 require('dotenv').config()
@@ -12,12 +13,15 @@ mongoose.connect(db_uri)
 // App init
 const app = express()
 app.use(cors())
+app.use(express.json())
 
 // Port init
 const port = process.env.PORT
 
 
-// Routes
+// Routes //
+
+// GET PAGES REQUEST
 app.get('/Dpages', (req, res) => {
     Dpage.find({}, (err, result) => {
         if (err) {
@@ -27,6 +31,17 @@ app.get('/Dpages', (req, res) => {
         }
     })
 })
+
+// POST PAGES REQUEST
+app.post('/createPage', async (req, res) => {
+    const page = req.body
+    const newPage = new Dpage(page)
+    await newPage.save()
+
+    res.json('The new page has been create succsefully')
+})
+
+
 
 
 // Server init

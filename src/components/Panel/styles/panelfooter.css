@@ -1,4 +1,7 @@
 .panelfooter {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
     border-top: 1px solid #FFF3E4;
     -webkit-box-shadow:0px -7px 8px -5px #8a6a6a ;
     -moz-box-shadow:0px -7px 8px -5px #8a6a6a ;

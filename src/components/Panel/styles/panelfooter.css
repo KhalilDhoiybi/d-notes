@@ -1,5 +1,8 @@
 .panelfooter {
     border-top: 1px solid #FFF3E4;
+    -webkit-box-shadow:0px -7px 8px -5px #8a6a6a ;
+    -moz-box-shadow:0px -7px 8px -5px #8a6a6a ;
+    box-shadow:0px -7px 8px -5px #8a6a6a ;
     width: 80%;
     height: 10%;
     

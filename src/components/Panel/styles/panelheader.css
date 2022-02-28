@@ -1,8 +1,7 @@
 .panelheader {
-    color: white;
     width: 80%;
     height: 10%;
-    border-bottom: 1px solid white;
+    border-bottom: 1px solid #FFF3E4;
     display: flex;
     justify-content: center;
     flex-direction: column;

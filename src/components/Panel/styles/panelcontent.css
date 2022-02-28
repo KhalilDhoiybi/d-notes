@@ -3,4 +3,24 @@
     border-radius: 1rem;
     width: 80%;
     height: 70%;
+    display: flex;
+    flex-direction: column;
+}
+
+.pagestitle {
+    width: 100%;
+    height: 10%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.pagesnavbar {
+    width: 100%;
+    height: 60%;
+}
+
+.newpagemenu {
+    width: 100%;
+    height: 30%;
 }

@@ -4,7 +4,11 @@ import './styles/panelcontent.css'
 function PanelContent() {
     return(
         <div className='panelcontent'>
-            <h5>content</h5>
+            <div className='pagestitle'>
+                <h4>Dnotes Pages</h4>
+            </div>
+            <div className='pagesnavbar'></div>
+            <div className='newpagemenu'></div>
         </div>
     )
 }

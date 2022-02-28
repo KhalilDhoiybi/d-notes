@@ -3,4 +3,11 @@
     width: 80%;
     height: 10%;
     border-bottom: 1px solid white;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.panelheader h4 {
+    margin: 2%;
 }

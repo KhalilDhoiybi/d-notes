@@ -10,6 +10,7 @@
 .pagestitle {
     width: 100%;
     height: 10%;
+    border-bottom: 1px dotted #fff3e4;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -21,6 +22,7 @@
 }
 
 .newpagemenu {
+    border-top: 1px dotted #fff3e4;
     width: 100%;
     height: 30%;
 }

@@ -1,0 +1,15 @@
+.panel {
+    float: left;
+    position: relative;
+    width: 20%;
+    height: 100%;
+    background-color: #6B4F4F;
+    text-align: center;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    align-content: stretch;
+    align-items: center;
+    gap: 10px;
+}
+

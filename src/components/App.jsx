@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
+import Dnotespace from './Dnotesspace/Dnotespace'
+import Panel from './Panel/Panel'
 
 function App() {
 
@@ -15,7 +17,10 @@ function App() {
   // --------------------------------------------------------------
 
   return(
-    <div className='App'>Welcome to Dnotes.</div>
+    <div className='container'>
+      <Panel />
+      <Dnotespace />
+    </div>
   )
 }
 

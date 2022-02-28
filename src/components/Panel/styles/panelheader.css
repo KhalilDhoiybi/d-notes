@@ -1,0 +1,6 @@
+.panelheader {
+    color: white;
+    width: 80%;
+    flex-grow: 1;
+    border-bottom: 1px solid white;
+}

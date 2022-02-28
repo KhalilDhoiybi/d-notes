@@ -6,10 +6,9 @@
     background-color: #6B4F4F;
     text-align: center;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     flex-direction: column;
     align-content: stretch;
     align-items: center;
-    gap: 10px;
 }
 

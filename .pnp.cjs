@@ -37,6 +37,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [
             ["@emotion/react", "virtual:020a02f4e8dd79c709634966feea9a189cdcd272219c042ed1d24a1ad6497f7b21e3bb70525763affbf2a3eb3c4ed943a161331841c7a84f2d23f860d1035b07#npm:11.8.1"],
             ["@emotion/styled", "virtual:020a02f4e8dd79c709634966feea9a189cdcd272219c042ed1d24a1ad6497f7b21e3bb70525763affbf2a3eb3c4ed943a161331841c7a84f2d23f860d1035b07#npm:11.8.1"],
+            ["@mui/icons-material", "virtual:020a02f4e8dd79c709634966feea9a189cdcd272219c042ed1d24a1ad6497f7b21e3bb70525763affbf2a3eb3c4ed943a161331841c7a84f2d23f860d1035b07#npm:5.4.4"],
             ["@mui/material", "virtual:020a02f4e8dd79c709634966feea9a189cdcd272219c042ed1d24a1ad6497f7b21e3bb70525763affbf2a3eb3c4ed943a161331841c7a84f2d23f860d1035b07#npm:5.4.4"],
             ["@vitejs/plugin-react", "npm:1.2.0"],
             ["axios", "npm:0.26.0"],
@@ -749,6 +750,33 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD",
         }]
       ]],
+      ["@mui/icons-material", [
+        ["npm:5.4.4", {
+          "packageLocation": "./.yarn/cache/@mui-icons-material-npm-5.4.4-b97b45956a-c8207018a2.zip/node_modules/@mui/icons-material/",
+          "packageDependencies": [
+            ["@mui/icons-material", "npm:5.4.4"]
+          ],
+          "linkType": "SOFT",
+        }],
+        ["virtual:020a02f4e8dd79c709634966feea9a189cdcd272219c042ed1d24a1ad6497f7b21e3bb70525763affbf2a3eb3c4ed943a161331841c7a84f2d23f860d1035b07#npm:5.4.4", {
+          "packageLocation": "./.yarn/__virtual__/@mui-icons-material-virtual-20f90c02a6/0/cache/@mui-icons-material-npm-5.4.4-b97b45956a-c8207018a2.zip/node_modules/@mui/icons-material/",
+          "packageDependencies": [
+            ["@mui/icons-material", "virtual:020a02f4e8dd79c709634966feea9a189cdcd272219c042ed1d24a1ad6497f7b21e3bb70525763affbf2a3eb3c4ed943a161331841c7a84f2d23f860d1035b07#npm:5.4.4"],
+            ["@babel/runtime", "npm:7.17.2"],
+            ["@mui/material", "virtual:020a02f4e8dd79c709634966feea9a189cdcd272219c042ed1d24a1ad6497f7b21e3bb70525763affbf2a3eb3c4ed943a161331841c7a84f2d23f860d1035b07#npm:5.4.4"],
+            ["@types/mui__material", null],
+            ["@types/react", null],
+            ["react", "npm:17.0.2"]
+          ],
+          "packagePeers": [
+            "@mui/material",
+            "@types/mui__material",
+            "@types/react",
+            "react"
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
       ["@mui/material", [
         ["npm:5.4.4", {
           "packageLocation": "./.yarn/cache/@mui-material-npm-5.4.4-1258ca4b6d-c24017266a.zip/node_modules/@mui/material/",
@@ -1372,6 +1400,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["d-notes", "workspace:."],
             ["@emotion/react", "virtual:020a02f4e8dd79c709634966feea9a189cdcd272219c042ed1d24a1ad6497f7b21e3bb70525763affbf2a3eb3c4ed943a161331841c7a84f2d23f860d1035b07#npm:11.8.1"],
             ["@emotion/styled", "virtual:020a02f4e8dd79c709634966feea9a189cdcd272219c042ed1d24a1ad6497f7b21e3bb70525763affbf2a3eb3c4ed943a161331841c7a84f2d23f860d1035b07#npm:11.8.1"],
+            ["@mui/icons-material", "virtual:020a02f4e8dd79c709634966feea9a189cdcd272219c042ed1d24a1ad6497f7b21e3bb70525763affbf2a3eb3c4ed943a161331841c7a84f2d23f860d1035b07#npm:5.4.4"],
             ["@mui/material", "virtual:020a02f4e8dd79c709634966feea9a189cdcd272219c042ed1d24a1ad6497f7b21e3bb70525763affbf2a3eb3c4ed943a161331841c7a84f2d23f860d1035b07#npm:5.4.4"],
             ["@vitejs/plugin-react", "npm:1.2.0"],
             ["axios", "npm:0.26.0"],

@@ -1,11 +1,15 @@
 import React from 'react'
+import IconButton from '@mui/material/IconButton';
+import DeleteIcon from '@mui/icons-material/Delete';
 import './styles/pageindex.css'
 
 function Pageindex(props) {
     return(
         <div className='pageindex'>
             <h4>{props.pagename}</h4>
-            <button>delete</button>
+            <IconButton aria-label="delete" size="small">
+                <DeleteIcon fontSize="inherit" />
+            </IconButton>
         </div>
     )
 }

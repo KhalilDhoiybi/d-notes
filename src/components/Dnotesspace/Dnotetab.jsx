@@ -1,11 +1,13 @@
 import React from 'react'
+import Tabtitle from './Dnotetab/Tabtitle'
+import Workspace from './Dnotetab/Workspace'
 import './styles/dnotetab.css'
 
 function Dnotetab() {
     return(
         <div className='dnotetab'>
-            <div className='tabtitle'></div>
-            <div className='worksapce'></div>
+            <Tabtitle />
+            <Workspace />
         </div>
     )
 }

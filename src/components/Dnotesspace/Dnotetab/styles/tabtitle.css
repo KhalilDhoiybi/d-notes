@@ -1,0 +1,12 @@
+.tabtitle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 100%;
+    height: 7%;
+    
+    font-family: 'Josefin Sans', sans-serif;
+    border-bottom: 1px dashed #483434;
+    border-radius: 0px 0px 15px 15px;
+}

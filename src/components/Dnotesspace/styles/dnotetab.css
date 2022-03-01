@@ -1,15 +1,8 @@
 .dnotetab {
-    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
     width: 100%;
-    height: 89%;
+    height: 90%;
     bottom: 0;
-}
-
-.tabtitle {
-    position: relative;
-    width: 100%;
-    height: 7%;
-    border-bottom: 1px dashed #483434;
-    border-radius: 0px 0px 15px 15px;
-
 }

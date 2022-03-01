@@ -30,8 +30,8 @@ function PanelContent() {
             <div className='newpagemenu'>
                 <ThemeProvider theme={theme}>
                     <TextField
-                    label="New page"
-                    id="standard-basic-small"
+                    label="Add new"
+                    id="filled-basic-small"
                     variant="filled"
                     size="small"
                     color='primary'

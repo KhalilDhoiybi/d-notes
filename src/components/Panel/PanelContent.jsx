@@ -1,7 +1,9 @@
 import React from 'react'
 import Pageindex from './Pageindex'
 import TextField from '@mui/material/TextField'
-import { createTheme,ThemeProvider } from '@mui/material/styles';
+import { createTheme,ThemeProvider } from '@mui/material/styles'
+import AddIcon from '@mui/icons-material/Add'
+import IconButton from '@mui/material/IconButton'
 import './styles/panelcontent.css'
 
 function PanelContent() {
@@ -17,7 +19,7 @@ function PanelContent() {
         }
       });
 
-    const pages = ['page 1','page 2','page 3']
+    const pages = ['Prototype 1','Prototype 2','Prototype 3']
 
     return(
         <div className='panelcontent'>
@@ -30,12 +32,16 @@ function PanelContent() {
             <div className='newpagemenu'>
                 <ThemeProvider theme={theme}>
                     <TextField
+                    className='newpageinput'
                     label="Add new"
                     id="filled-basic-small"
                     variant="filled"
                     size="small"
                     color='primary'
                     />
+                    <IconButton aria-label="add new page">
+                        <AddIcon />
+                    </IconButton>
                 </ThemeProvider>
             
             </div>

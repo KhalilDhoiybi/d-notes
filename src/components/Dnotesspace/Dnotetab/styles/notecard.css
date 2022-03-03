@@ -1,0 +1,31 @@
+.notecard {
+    background-color: #e9d396;
+    width: 175px;
+    padding: 20px;
+    margin: 1rem;
+    
+    box-shadow:0px 0px 3px 0px #4f4f4f ;
+    border-radius:3px;
+}
+
+.notecontent {
+    float: left;
+}
+
+.notecontent h4 {
+    text-align: center;
+    margin-bottom: 10px;
+    font-family: 'Righteous', cursive;
+    color: #7e5656;
+    text-decoration: underline;
+}
+
+.notecontent p {
+    margin-bottom: 10px;
+    font-family: 'Sansita Swashed', cursive;
+    color: #271c1c;
+}
+
+.notedelete {
+    float: right;
+}

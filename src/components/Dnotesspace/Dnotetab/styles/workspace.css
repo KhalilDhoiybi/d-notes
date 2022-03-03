@@ -3,4 +3,9 @@
     height: 93%;
     background-color: #eed6c4;
     background-image: url("https://www.transparenttextures.com/patterns/white-tiles.png");
+
+    display: flex;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    align-content: flex-start;
 }

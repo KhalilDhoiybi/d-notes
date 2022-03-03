@@ -1,6 +1,7 @@
 .workspace {
     width: 100%;
     height: 93%;
+    padding-top: 1rem;
     background-color: #eed6c4;
     background-image: url("https://www.transparenttextures.com/patterns/white-tiles.png");
 
@@ -9,4 +10,22 @@
     justify-content: center;
     flex-wrap: wrap;
     align-content: flex-start;
+
+    overflow-y: auto;
+    scrollbar-width: auto;
+    scrollbar-color: #6b6145 #eed6c5;
+}
+
+.workspace::-webkit-scrollbar {
+    width: 10px;
+}
+
+.workspace::-webkit-scrollbar-track {
+    background: #eed6c5;
+}
+
+.workspace::-webkit-scrollbar-thumb {
+    background-color: #6b6145;
+    border-radius: 10px;
+    border: 3px solid #eed6c5;
 }

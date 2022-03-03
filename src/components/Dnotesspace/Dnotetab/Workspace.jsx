@@ -13,6 +13,11 @@ function Workspace() {
             <Notecard />
             <Notecard />
             <Notecard />
+            <Notecard />
+            <Notecard />
+            <Notecard />
+            <Notecard />
+            <Notecard />
             <Addnote />
         </div>
     )

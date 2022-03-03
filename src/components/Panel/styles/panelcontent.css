@@ -20,9 +20,25 @@
 }
 
 .pagesnavbar {
-    width: 100%;
     height: 60%;
     padding: 5px;
+    overflow-y: auto;
+    scrollbar-width: auto;
+    scrollbar-color: #3d2d2d #866363;
+    
+}
+.pagesnavbar::-webkit-scrollbar {
+    width: 10px;
+}
+
+.pagesnavbar::-webkit-scrollbar-track {
+    background: #866363;
+}
+
+.pagesnavbar::-webkit-scrollbar-thumb {
+    background-color: #3d2d2d;
+    border-radius: 10px;
+    border: 3px solid #866363;
 }
 
 .newpagemenu {

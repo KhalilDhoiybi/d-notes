@@ -19,7 +19,7 @@ function PanelContent() {
         }
       });
 
-    const pages = ['Prototype 1','Prototype 2','Prototype 3']
+    const pages = ['Prototype 1','Prototype 2','Prototype 4','Prototype 5','Prototype 6','Prototype 7','Prototype 8','Prototype 9','Prototype 10']
 
     return(
         <div className='panelcontent'>

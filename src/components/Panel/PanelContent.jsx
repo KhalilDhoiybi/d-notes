@@ -40,7 +40,7 @@ function PanelContent() {
                     color='primary'
                     />
                     <IconButton aria-label="add new page">
-                        <AddIcon />
+                        <AddIcon fontSize='inherit' />
                     </IconButton>
                 </ThemeProvider>
             

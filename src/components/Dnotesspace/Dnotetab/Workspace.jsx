@@ -1,4 +1,5 @@
 import React from 'react'
+import Addnote from './Addnote'
 import Notecard from './Notecard'
 import './styles/workspace.css'
 
@@ -12,7 +13,7 @@ function Workspace() {
             <Notecard />
             <Notecard />
             <Notecard />
-
+            <Addnote />
         </div>
     )
 }

@@ -1,0 +1,14 @@
+.addnote {
+    background-color: #e9d396;
+    width: 175px;
+    height: 164px;
+    padding: 20px;
+    margin: 1rem;
+    
+    box-shadow:0px 0px 3px 0px #4f4f4f ;
+    border-radius:3px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

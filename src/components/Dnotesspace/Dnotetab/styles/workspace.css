@@ -5,7 +5,8 @@
     background-image: url("https://www.transparenttextures.com/patterns/white-tiles.png");
 
     display: flex;
-    align-items: flex-start;
+    align-items: center;
+    justify-content: center;
     flex-wrap: wrap;
     align-content: flex-start;
 }

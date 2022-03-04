@@ -27,8 +27,8 @@ function PanelContent(props) {
             </div>
             <div className='pagesnavbar'>
                 {
-                    props.data.length > 0 ?
-                    props.data.map((page) => <Pageindex key={page._id} pagename={page.page_title} />) :
+                    props.info.data.length > 0 ?
+                    props.info.data.map((page) => <Pageindex key={page._id} pagename={page.page_title} />) :
                     <Pageempty />
                 }
             </div>
@@ -43,7 +43,7 @@ function PanelContent(props) {
                     color='primary'
                     />
                     <IconButton aria-label="add new page">
-                        <AddIcon fontSize='inherit' />
+                        <AddIcon />
                     </IconButton>
                 </ThemeProvider>
             

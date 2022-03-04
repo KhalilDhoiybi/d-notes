@@ -3,11 +3,11 @@ import Tabtitle from './Dnotetab/Tabtitle'
 import Workspace from './Dnotetab/Workspace'
 import './styles/dnotetab.css'
 
-function Dnotetab() {
+function Dnotetab(props) {
     return(
         <div className='dnotetab'>
-            <Tabtitle />
-            <Workspace />
+            <Tabtitle {...props} />
+            <Workspace {...props} />
         </div>
     )
 }

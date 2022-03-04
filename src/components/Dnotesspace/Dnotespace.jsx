@@ -3,11 +3,11 @@ import Dnotetab from './Dnotetab'
 import Header from './Header'
 import './styles/dnotespace.css'
 
-function Dnotespace() {
+function Dnotespace(props) {
     return(
         <div className='dnotespace'>
             <Header />
-            <Dnotetab />
+            <Dnotetab {...props} />
         </div>
     )
 }

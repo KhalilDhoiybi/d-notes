@@ -8,7 +8,7 @@ function Panel(props) {
     return(
         <div className='panel'>
             <PanelHeader />
-            <PanelContent data={props.data} />
+            <PanelContent {...props} />
             <PanelFooter />
         </div>
     )

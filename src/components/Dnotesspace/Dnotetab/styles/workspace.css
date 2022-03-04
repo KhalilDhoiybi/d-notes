@@ -6,7 +6,7 @@
     background-image: url("https://www.transparenttextures.com/patterns/white-tiles.png");
 
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: center;
     flex-wrap: wrap;
     align-content: flex-start;

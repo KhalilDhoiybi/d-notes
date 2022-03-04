@@ -5,8 +5,9 @@ import { createTheme,ThemeProvider } from '@mui/material/styles'
 import AddIcon from '@mui/icons-material/Add'
 import IconButton from '@mui/material/IconButton'
 import './styles/panelcontent.css'
+import Pageempty from './Pageempty'
 
-function PanelContent() {
+function PanelContent(props) {
 
     // mui color theme
     const theme = createTheme({
@@ -19,15 +20,17 @@ function PanelContent() {
         }
       });
 
-    const pages = ['Prototype 1','Prototype 2','Prototype 4','Prototype 5','Prototype 6','Prototype 7','Prototype 8','Prototype 9','Prototype 10']
-
     return(
         <div className='panelcontent'>
             <div className='pagestitle'>
                 <h4>Dnotes Pages</h4>
             </div>
             <div className='pagesnavbar'>
-                {pages.map((page) => <Pageindex pagename={page} />)}
+                {
+                    props.data.length > 0 ?
+                    props.data.map((page) => <Pageindex key={page._id} pagename={page.page_title} />) :
+                    <Pageempty />
+                }
             </div>
             <div className='newpagemenu'>
                 <ThemeProvider theme={theme}>

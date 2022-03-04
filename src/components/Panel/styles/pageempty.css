@@ -1,0 +1,7 @@
+.pageempty {
+    height: 100%;
+    color: #fff8ef79;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

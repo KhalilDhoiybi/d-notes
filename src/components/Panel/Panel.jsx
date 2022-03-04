@@ -4,11 +4,11 @@ import PanelContent from './PanelContent'
 import PanelFooter from './PanelFooter'
 import './styles/panel.css'
 
-function Panel() {
+function Panel(props) {
     return(
         <div className='panel'>
             <PanelHeader />
-            <PanelContent />
+            <PanelContent data={props.data} />
             <PanelFooter />
         </div>
     )

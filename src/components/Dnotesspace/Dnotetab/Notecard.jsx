@@ -3,15 +3,13 @@ import IconButton from '@mui/material/IconButton';
 import DeleteIcon from '@mui/icons-material/Delete';
 import './styles/notecard.css'
 
-function Notecard() {
-
-    const txt = 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur reiciendis quia neque dignissimos.'
+function Notecard(props) {
 
     return(
         <div className="notecard">
             <div className="notecontent">
-                <h4>Test</h4>
-                <p>{txt} </p>
+                <h4>{props.info.selectedPage.page_notes[props.index].note_title}</h4>
+                <p>{props.info.selectedPage.page_notes[props.index].note_content}</p>
             </div>
             <div className="notedelete">
             <IconButton aria-label="delete" size="small">

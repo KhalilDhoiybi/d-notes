@@ -40,6 +40,13 @@ function PanelContent(props) {
         setNewPageInput(value)
     }
 
+    // Add button Handler
+    function addButtonHander() {
+        props.createpage(newPageInput)
+        setNewPageInput('')
+        setIsRender(false)
+    }
+
     return(
         <div className='panelcontent'>
             <div className='pagestitle'>
@@ -65,7 +72,7 @@ function PanelContent(props) {
                     value={newPageInput}
                     />
                     <Zoom in={isRender} >
-                        <IconButton aria-label="add new page">
+                        <IconButton onClick={addButtonHander} aria-label="add new page">
                             <AddIcon />
                         </IconButton>
                     </Zoom>  

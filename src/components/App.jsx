@@ -44,13 +44,21 @@ function App() {
   }
 
   // Create page handler
-  function createPageHandler() {
-    
+  function createPageHandler(title) {
+    const newPage = {
+      _id: pagesData.length+1,
+      page_title: title,
+      page_notes: []
+    }
+
+    console.log(newPage);
+
+    setPagesData(prevData => [...prevData,newPage])
   }
 
   return(
     <div className='container'>
-      <Panel info={info} selectpage={selectPageHandler} />
+      <Panel info={info} selectpage={selectPageHandler} createpage={createPageHandler} />
       <Dnotespace info={info} closepage={closePageHandler} />
     </div>
   )

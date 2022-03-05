@@ -29,3 +29,15 @@
     border-radius: 10px;
     border: 3px solid #eed6c5;
 }
+
+.unselectedmsg {
+    height: 100%;
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: #48343480;
+    font-family: 'Fredoka', sans-serif;
+}

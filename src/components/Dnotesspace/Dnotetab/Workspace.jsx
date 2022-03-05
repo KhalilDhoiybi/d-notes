@@ -14,14 +14,17 @@ function Workspace(props) {
                 </Fragment>
             )
         } else {
-            return( <h1>Select page or create new one</h1> )
+            return(
+                <div className='unselectedmsg'>
+                    <h1>Select page or create new one.</h1>
+                </div>
+            )
         }
     }
 
     return(
         <div className='workspace'>
-            {fetchNotes(props)}
-            
+            {fetchNotes(props)}    
         </div>
     )
 }

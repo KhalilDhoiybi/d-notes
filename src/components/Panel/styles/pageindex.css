@@ -9,3 +9,11 @@
     margin-bottom: 2px;
 }
 
+.pageindex h4 {
+    user-select: none;
+}
+
+.pageindex h4:hover {
+    user-select: none;
+    cursor: pointer;
+}

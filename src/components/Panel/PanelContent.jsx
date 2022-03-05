@@ -1,7 +1,8 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Pageindex from './Pageindex'
 import TextField from '@mui/material/TextField'
 import { createTheme,ThemeProvider } from '@mui/material/styles'
+import Zoom from '@mui/material/Zoom';
 import AddIcon from '@mui/icons-material/Add'
 import IconButton from '@mui/material/IconButton'
 import './styles/panelcontent.css'
@@ -19,6 +20,25 @@ function PanelContent(props) {
           }
         }
       });
+    
+    // Input text state
+    const [newPageInput, setNewPageInput] = useState('')
+    // Zoom in button state
+    const [isRender, setIsRender] = useState(false)
+    
+    // Input handler
+    function inputHandler(event) {
+
+        const value = event.target.value
+
+        // Input trigger conditions
+        if (value) {
+            setIsRender(true)
+        } else {
+            setIsRender(false)
+        }
+        setNewPageInput(value)
+    }
 
     return(
         <div className='panelcontent'>
@@ -41,10 +61,14 @@ function PanelContent(props) {
                     variant="filled"
                     size="small"
                     color='primary'
+                    onChange={inputHandler}
+                    value={newPageInput}
                     />
-                    <IconButton aria-label="add new page">
-                        <AddIcon />
-                    </IconButton>
+                    <Zoom in={isRender} >
+                        <IconButton aria-label="add new page">
+                            <AddIcon />
+                        </IconButton>
+                    </Zoom>  
                 </ThemeProvider>
             
             </div>

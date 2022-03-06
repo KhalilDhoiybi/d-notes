@@ -19,6 +19,10 @@ function App() {
   // Data/State/info object
   const info = {data: pagesData, selectedPage: selectedPage}
 
+  // Add button note display state
+  const [addisplay, setAddisplay] = useState(true)
+
+
 
   // Data fetching from the api
   // --------------------------------------------------------------
@@ -33,14 +37,17 @@ function App() {
 
   
 // ------------------------- Page Handles -------------------------
+
   // Select page handler
   function selectPageHandler(index) {
     setSelectedPage(pagesData[index])
+    setAddisplay(true)
   }
 
   // Close page handler
   function closePageHandler() {
     selectPageHandler(null)
+    setAddisplay(true)
   }
 
   // Create page handler
@@ -58,16 +65,26 @@ function App() {
   function deletePageHandler(index,id) {
     if (selectedPage._id == id) {
       selectPageHandler(null)
+      setAddisplay(true)
+
     }
     setPagesData(prevPages => prevPages.filter((page, i) => i != index ))
   }
+
 // ----------------------------------------------------------------
 
+// ------------------------ Notes Handles --------------------------
+  // Add Note button handler
+  function addNoteButtonHandler(change) {
+    setAddisplay(change)
+  }
+
+// -----------------------------------------------------------------
 
   return(
     <div className='container'>
       <Panel info={info} selectpage={selectPageHandler} createpage={createPageHandler} deletepage={deletePageHandler} />
-      <Dnotespace info={info} closepage={closePageHandler} />
+      <Dnotespace info={info} closepage={closePageHandler} addnotedisplay={addisplay} addnotebutton={addNoteButtonHandler} />
     </div>
   )
 }

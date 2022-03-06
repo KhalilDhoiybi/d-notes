@@ -32,7 +32,7 @@ function App() {
   // --------------------------------------------------------------
 
   
-
+// ------------------------- Page Handles -------------------------
   // Select page handler
   function selectPageHandler(index) {
     setSelectedPage(pagesData[index])
@@ -51,14 +51,22 @@ function App() {
       page_notes: []
     }
 
-    console.log(newPage);
-
     setPagesData(prevData => [...prevData,newPage])
   }
 
+  // Delete page handler
+  function deletePageHandler(index,id) {
+    if (selectedPage._id == id) {
+      selectPageHandler(null)
+    }
+    setPagesData(prevPages => prevPages.filter((page, i) => i != index ))
+  }
+// ----------------------------------------------------------------
+
+
   return(
     <div className='container'>
-      <Panel info={info} selectpage={selectPageHandler} createpage={createPageHandler} />
+      <Panel info={info} selectpage={selectPageHandler} createpage={createPageHandler} deletepage={deletePageHandler} />
       <Dnotespace info={info} closepage={closePageHandler} />
     </div>
   )

@@ -55,7 +55,7 @@ function PanelContent(props) {
             <div className='pagesnavbar'>
                 {
                     props.info.data.length > 0 ?
-                    props.info.data.map((page,index) => <Pageindex key={page._id} index={index} pagename={page.page_title} handler={props.selectpage} />) :
+                    props.info.data.map((page,index) => <Pageindex key={page._id} id={page._id} index={index} pagename={page.page_title} selecthandler={props.selectpage} deletehandler={props.deletepage} />) :
                     <Pageempty />
                 }
             </div>

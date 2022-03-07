@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import Pageindex from './Pageindex'
 import TextField from '@mui/material/TextField'
 import { createTheme,ThemeProvider } from '@mui/material/styles'
-import Zoom from '@mui/material/Zoom';
+import Zoom from '@mui/material/Zoom'
 import AddIcon from '@mui/icons-material/Add'
 import IconButton from '@mui/material/IconButton'
 import './styles/panelcontent.css'
@@ -55,7 +55,7 @@ function PanelContent(props) {
             <div className='pagesnavbar'>
                 {
                     props.info.data.length > 0 ?
-                    props.info.data.map((page,index) => <Pageindex key={page._id} id={page._id} index={index} pagename={page.page_title} selecthandler={props.selectpage} deletehandler={props.deletepage} />) :
+                    props.info.data.map((page,index) => <Pageindex key={page.id} id={page.id} index={index} pagename={page.page_title} selecthandler={props.selectpage} deletehandler={props.deletepage} />) :
                     <Pageempty />
                 }
             </div>

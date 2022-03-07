@@ -6,7 +6,7 @@ import Panel from './Panel/Panel'
 function App() {
 
   // data TEST PROTOTYPE
-  const pagesDatafromDB = [{_id: '1',page_title: 'test 1',page_notes: [{_id: '01',note_title: 'title-test 1',note_content: 'content_test 1'},{_id: '011',note_title: 'title-test 11',note_content: 'content_test 11'},{_id: '0111',note_title: 'title-test 111',note_content: 'content_test 111'}]},{_id: '2',page_title: 'test 2',page_notes: [{_id: '02',note_title: 'title-test 2',note_content: 'content_test 2'},{_id: '022',note_title: 'title-test 22',note_content: 'content_test 22'}]},{_id: '3',page_title: 'test 3',page_notes: [{_id: '03',note_title: 'title-test 3',note_content: 'content_test 3'}]}]
+  const pagesDatafromDB = [{id: '0',page_title: 'test 0',page_notes: [{id: '0',note_title: 'title-test 1',note_content: 'content_test 1'},{id: '1',note_title: 'title-test 11',note_content: 'content_test 11'},{id: '2',note_title: 'title-test 111',note_content: 'content_test 111'}]},{id: '1',page_title: 'test 1',page_notes: [{id: '0',note_title: 'title-test 0',note_content: 'content_test 0'},{id: '1',note_title: 'title-test 1',note_content: 'content_test 22'}]},{id: '2',page_title: 'test 2',page_notes: [{id: '0',note_title: 'title-test 2',note_content: 'content_test 2'}]}]
   const singlePageTest = pagesDatafromDB[0]
 
 
@@ -35,17 +35,30 @@ function App() {
   // }, [])
   // --------------------------------------------------------------
 
-  
+
+  // Insert new note function
+  function insertNewNote() {
+    const updatedPaged = pagesData.map(page => page.id == selectedPage.id ? selectedPage : page)
+    setPagesData(updatedPaged)
+    
+  }
+
 // ------------------------- Page Handles -------------------------
 
   // Select page handler
   function selectPageHandler(index) {
+    if (selectedPage != null) {
+      insertNewNote()
+    }
     setSelectedPage(pagesData[index])
     setAddisplay(true)
   }
 
   // Close page handler
   function closePageHandler() {
+    if (selectedPage != null) {
+      insertNewNote()      
+    }
     selectPageHandler(null)
     setAddisplay(true)
   }
@@ -53,7 +66,7 @@ function App() {
   // Create page handler
   function createPageHandler(title) {
     const newPage = {
-      _id: pagesData.length+1,
+      id: pagesData.length,
       page_title: title,
       page_notes: []
     }
@@ -63,7 +76,7 @@ function App() {
 
   // Delete page handler
   function deletePageHandler(index,id) {
-    if (selectedPage._id == id) {
+    if (selectedPage.id == id) {
       selectPageHandler(null)
       setAddisplay(true)
 
@@ -79,12 +92,25 @@ function App() {
     setAddisplay(change)
   }
 
+  // Create Note handler
+  function createNoteHandler(title,content) {
+    const newNote = {
+      id: selectedPage.page_notes.length,
+      note_title: title,
+      note_content: content
+    }
+    
+    setSelectedPage(prevPage => ({...prevPage, page_notes: [...prevPage.page_notes, newNote]}))
+    insertNewNote()
+
+  }
+
 // -----------------------------------------------------------------
 
   return(
     <div className='container'>
       <Panel info={info} selectpage={selectPageHandler} createpage={createPageHandler} deletepage={deletePageHandler} />
-      <Dnotespace info={info} closepage={closePageHandler} addnotedisplay={addisplay} addnotebutton={addNoteButtonHandler} />
+      <Dnotespace info={info} closepage={closePageHandler} addnotedisplay={addisplay} addnotebutton={addNoteButtonHandler} createnote={createNoteHandler} />
     </div>
   )
 }

@@ -9,7 +9,7 @@ function Workspace(props) {
         if (props.info.selectedPage != null) {
             return(
                 <Fragment>
-                    {props.info.selectedPage.page_notes.map((note,index) => <Notecard key={note._id} index={index} {...props} />)}
+                    {props.info.selectedPage.page_notes.map((note,index) => <Notecard key={note.id} id={note.id} index={index} {...props} />)}
                     <Addnote {...props} />                    
                 </Fragment>
             )

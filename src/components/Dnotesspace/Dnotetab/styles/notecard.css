@@ -2,20 +2,16 @@
     position: relative;
     background-color: #e9d396;
     width: 175px;
-    padding: 20px;
+    padding: 10px;
     margin: 1rem;
 
     display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: start;
     
     box-shadow:0px 0px 3px 0px #4f4f4f ;
     border-radius:3px;
-}
-
-.notecontent {
-    float: left;
-    
 }
 
 .notecontent h4 {
@@ -27,14 +23,13 @@
 }
 
 .notecontent p {
-    margin-bottom: 5px;
+    margin-bottom: 10px;
     font-family: 'Sansita Swashed', cursive;
     color: #271c1c;
 }
 
-.notedelete {
-    position: absolute;
-    right: 5px;
-    bottom: 5px;
-    margin-left: 2px;
+.notebuttons {
+    width: 100% ;
+    display: flex;
+    justify-content: space-between;
 }

@@ -19,7 +19,7 @@ function PanelContent(props) {
               contrastText: '#483434'
           }
         }
-      });
+      })
     
     // Input text state
     const [newPageInput, setNewPageInput] = useState('')

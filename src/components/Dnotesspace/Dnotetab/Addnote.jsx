@@ -1,31 +1,62 @@
 import React, { useState } from 'react'
-import AddIcon from '@mui/icons-material/Add'
 import IconButton from '@mui/material/IconButton'
+import AddIcon from '@mui/icons-material/Add'
+import DoneIcon from '@mui/icons-material/Done'
+import ArrowBackIcon from '@mui/icons-material/ArrowBack'
 import Grow from '@mui/material/Grow'
+import TextField from '@mui/material/TextField'
+import { createTheme,ThemeProvider } from '@mui/material/styles'
 import './styles/addnote.css'
 
 function Addnote(props) {
 
+    // mui color theme
+    const theme = createTheme({
+        palette: {
+          primary: {
+              main: '#271c1c',
+              light: '#271c1c',
+              contrastText: '#271c1c'
+          }
+        }
+      })
 
     function AddNoteButton() {
         return(
-            <Grow direction='up' in={props.addnotedisplay} >
-                <div className='addnotebutton'>
-                    <IconButton onClick={() => props.addnotebutton(false)} aria-label="add new note" size='large'>
-                        <AddIcon fontSize='large'/>
-                    </IconButton>
-                </div>
-            </Grow>
+            <div className='addnotebutton'>
+                <IconButton onClick={() => props.addnotebutton(false)} aria-label="add new note" size='large'>
+                    <AddIcon fontSize='large'/>
+                </IconButton>
+            </div>
         )
     }
 
     function AddNoteForm() {
         return(
-            <Grow direction='down' in={!props.addnotedisplay} >
+            <ThemeProvider theme={theme}>
                 <div className='addnoteform' >
-                    Test
-                </div>                
-            </Grow>  
+                    <div className='notetitleform'>
+                        <TextField id="outlined-basic" label="Note title" variant="outlined" size="small" />
+                    </div>
+                    <div className="notecontentform">
+                        <TextField
+                            id="outlined-multiline-static"
+                            label="Note content"
+                            multiline
+                            rows={3}
+                            size="small"
+                        />
+                    </div>
+                    <div className="notebuttonsform">
+                    <IconButton onClick={() => props.addnotebutton(true)} aria-label="Back" size="small" >
+                        <ArrowBackIcon />
+                    </IconButton>
+                    <IconButton aria-label="Done" size="small" >
+                        <DoneIcon />
+                    </IconButton>
+                    </div>
+                </div>
+            </ThemeProvider>
         )
     }
 

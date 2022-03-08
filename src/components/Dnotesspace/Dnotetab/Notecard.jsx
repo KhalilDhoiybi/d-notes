@@ -2,6 +2,9 @@ import React, { Fragment } from 'react'
 import IconButton from '@mui/material/IconButton'
 import DeleteIcon from '@mui/icons-material/Delete'
 import EditIcon from '@mui/icons-material/Edit'
+import DoneIcon from '@mui/icons-material/Done'
+import ArrowBackIcon from '@mui/icons-material/ArrowBack'
+import TextField from '@mui/material/TextField'
 import { createTheme,ThemeProvider } from '@mui/material/styles'
 import './styles/notecard.css'
 
@@ -43,7 +46,32 @@ function Notecard(props) {
 
     function NoteEdit() {
         return(
-            <div>Test</div>
+            <ThemeProvider theme={theme}>
+                <div className='editnoteform' >
+                    <div className='notetitleform'>
+                        <TextField  name="title" id="outlined-basic" label="Note title" variant="outlined" size="small" />
+                    </div>
+                    <div className="notecontentform">
+                        <TextField
+                            
+                            name="content"
+                            id="outlined-multiline-static"
+                            label="Note content"
+                            multiline
+                            size="small"
+                            
+                        />
+                    </div>
+                    <div className="notebuttonsform">
+                        <IconButton onClick={() => props.editnotebutton(null)} aria-label="Back" size="small" >
+                            <ArrowBackIcon />
+                        </IconButton>
+                        <IconButton aria-label="Done" size="small" >
+                            <DoneIcon />
+                        </IconButton>
+                    </div>
+                </div>
+            </ThemeProvider>
         )
     }
 

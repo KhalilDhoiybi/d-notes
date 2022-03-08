@@ -12,10 +12,6 @@
     
     box-shadow:0px 0px 3px 0px #4f4f4f ;
     border-radius:3px;
-
-    word-wrap: break-word;
-    white-space: -moz-pre-wrap;
-    white-space: pre-wrap; 
 }
 
 .notecontent h4 {

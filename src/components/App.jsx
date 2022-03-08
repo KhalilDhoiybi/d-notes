@@ -19,8 +19,11 @@ function App() {
   // Data/State/info object
   const info = {data: pagesData, selectedPage: selectedPage}
 
-  // Add button note display state
+  // Add note button display state
   const [addisplay, setAddisplay] = useState(true)
+  
+  // Edit note button state NoteID/null
+  const [editdisplay, setEditdisplay] = useState(null)
 
 
 
@@ -52,6 +55,7 @@ function App() {
     }
     setSelectedPage(pagesData[index])
     setAddisplay(true)
+    setEditdisplay(null)
   }
 
   // Close page handler
@@ -61,6 +65,7 @@ function App() {
     }
     selectPageHandler(null)
     setAddisplay(true)
+    setEditdisplay(null)
   }
 
   // Create page handler
@@ -90,6 +95,13 @@ function App() {
   // Add Note button handler
   function addNoteButtonHandler(change) {
     setAddisplay(change)
+    setEditdisplay(null)
+  }
+
+  // Edit Note button handler
+  function editNoteButtonHandler(change) {
+    setEditdisplay(change)
+    setAddisplay(true)
   }
 
   // Create Note handler
@@ -118,7 +130,7 @@ function App() {
   return(
     <div className='container'>
       <Panel info={info} selectpage={selectPageHandler} createpage={createPageHandler} deletepage={deletePageHandler} />
-      <Dnotespace info={info} closepage={closePageHandler} addnotedisplay={addisplay} addnotebutton={addNoteButtonHandler} createnote={createNoteHandler} deletenote={deleteNoteHandler} />
+      <Dnotespace info={info} closepage={closePageHandler} addnotedisplay={addisplay} addnotebutton={addNoteButtonHandler} createnote={createNoteHandler} deletenote={deleteNoteHandler} editnotedisplay={editdisplay} editnotebutton={editNoteButtonHandler} />
     </div>
   )
 }

@@ -129,8 +129,22 @@ function App() {
 
   return(
     <div className='container'>
-      <Panel info={info} selectpage={selectPageHandler} createpage={createPageHandler} deletepage={deletePageHandler} />
-      <Dnotespace info={info} closepage={closePageHandler} addnotedisplay={addisplay} addnotebutton={addNoteButtonHandler} createnote={createNoteHandler} deletenote={deleteNoteHandler} editnotedisplay={editdisplay} editnotebutton={editNoteButtonHandler} />
+      <Panel 
+        info={info} 
+        selectpage={selectPageHandler} 
+        createpage={createPageHandler} 
+        deletepage={deletePageHandler} 
+      />
+      <Dnotespace 
+        info={info} 
+        closepage={closePageHandler} 
+        addnotedisplay={addisplay} 
+        addnotebutton={addNoteButtonHandler} 
+        createnote={createNoteHandler} 
+        deletenote={deleteNoteHandler} 
+        editnotedisplay={editdisplay} 
+        editnotebutton={editNoteButtonHandler} 
+      />
     </div>
   )
 }

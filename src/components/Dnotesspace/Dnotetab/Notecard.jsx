@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react'
+import React, { Fragment, useState } from 'react'
 import IconButton from '@mui/material/IconButton'
 import DeleteIcon from '@mui/icons-material/Delete'
 import EditIcon from '@mui/icons-material/Edit'
@@ -7,9 +7,6 @@ import ArrowBackIcon from '@mui/icons-material/ArrowBack'
 import TextField from '@mui/material/TextField'
 import { createTheme,ThemeProvider } from '@mui/material/styles'
 import './styles/notecard.css'
-
-
-
 
 
 function Notecard(props) {
@@ -25,9 +22,27 @@ function Notecard(props) {
         }
       })
 
+    //  Edit note state
+    const [noteeditor, setNoteeditor] = useState({
+        title: props.info.selectedPage.page_notes[props.index].note_title,
+        content: props.info.selectedPage.page_notes[props.index].note_content
+    })
+
+    // note editor handler
+    function noteEditorHandler(event) {
+
+        const {name, value} = event.target
+
+        if (name == "title") {
+            setNoteeditor(prevInput => ({...prevInput, title: value}))
+        } else {
+            setNoteeditor(prevInput => ({...prevInput, content: value}))
+        }
+    }
+ 
     function NoteCard() {
         return(
-            <Fragment>
+            <div className="notecontainer">
                 <div className="notecontent">
                     <h4>{props.info.selectedPage.page_notes[props.index].note_title}</h4>
                     <div className='notetext'>{props.info.selectedPage.page_notes[props.index].note_content}</div>
@@ -40,7 +55,7 @@ function Notecard(props) {
                         <DeleteIcon fontSize="inherit" />
                     </IconButton>
                 </div>
-            </Fragment>
+            </div>
         )
     }
 
@@ -49,17 +64,17 @@ function Notecard(props) {
             <ThemeProvider theme={theme}>
                 <div className='editnoteform' >
                     <div className='notetitleform'>
-                        <TextField  name="title" id="outlined-basic" label="Note title" variant="outlined" size="small" />
+                        <TextField onChange={noteEditorHandler} name="title" id="outlined-basic" label="Note title" variant="outlined" size="small" value={noteeditor.title} />
                     </div>
                     <div className="notecontentform">
                         <TextField
-                            
+                            onChange={noteEditorHandler}
                             name="content"
                             id="outlined-multiline-static"
                             label="Note content"
                             multiline
                             size="small"
-                            
+                            value={noteeditor.content}
                         />
                     </div>
                     <div className="notebuttonsform">
@@ -76,7 +91,7 @@ function Notecard(props) {
     }
 
     return(
-        <div className="notecard">
+        <div className='notecard'>
             {props.editnotedisplay == props.id ? NoteEdit() : NoteCard()}    
         </div>
     )

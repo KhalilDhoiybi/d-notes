@@ -16,7 +16,7 @@ function Notecard(props) {
                 <IconButton aria-label="edit" size="small">
                     <EditIcon fontSize="inherit" />
                 </IconButton>
-                <IconButton aria-label="delete" size="small">
+                <IconButton onClick={() => props.deletenote(props.id)} aria-label="delete" size="small">
                     <DeleteIcon fontSize="inherit" />
                 </IconButton>
             </div>

@@ -12,20 +12,28 @@
     
     box-shadow:0px 0px 3px 0px #4f4f4f ;
     border-radius:3px;
+
+    word-wrap: break-word;
+    white-space: -moz-pre-wrap;
+    white-space: pre-wrap; 
 }
 
 .notecontent h4 {
+    width: 170px;
     text-align: center;
     margin-bottom: 10px;
     font-family: 'Righteous', cursive;
     color: #7e5656;
     text-decoration: underline;
+    white-space: pre-wrap;
 }
 
-.notecontent p {
+.notetext {
+    width: 170px;
     margin-bottom: 10px;
     font-family: 'Sansita Swashed', cursive;
     color: #271c1c;
+    white-space: pre-wrap;
 }
 
 .notebuttons {

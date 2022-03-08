@@ -10,7 +10,7 @@ function Notecard(props) {
         <div className="notecard">
             <div className="notecontent">
                 <h4>{props.info.selectedPage.page_notes[props.index].note_title}</h4>
-                <p>{props.info.selectedPage.page_notes[props.index].note_content}</p>
+                <div className='notetext'>{props.info.selectedPage.page_notes[props.index].note_content}</div>
             </div>
             <div className="notebuttons">
                 <IconButton aria-label="edit" size="small">

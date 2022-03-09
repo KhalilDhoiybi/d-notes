@@ -6,9 +6,7 @@ import Panel from './Panel/Panel'
 function App() {
 
   // data TEST PROTOTYPE
-  const pagesDatafromDB = [{id: '0',page_title: 'test 0',page_notes: [{id: '0',note_title: 'title-test 1',note_content: 'content_test 1'},{id: '1',note_title: 'title-test 11',note_content: 'content_test 11'},{id: '2',note_title: 'title-test 111',note_content: 'content_test 111'}]},{id: '1',page_title: 'test 1',page_notes: [{id: '0',note_title: 'title-test 0',note_content: 'content_test 0'},{id: '1',note_title: 'title-test 1',note_content: 'content_test 22'}]},{id: '2',page_title: 'test 2',page_notes: [{id: '0',note_title: 'title-test 2',note_content: 'content_test 2'}]}]
-
-
+  const pagesDatafromDB = [{page_title: 'test 0',page_notes: [{note_title: 'title-test 1',note_content: 'content_test 1'},{note_title: 'title-test 11',note_content: 'content_test 11'},{note_title: 'title-test 111',note_content: 'content_test 111'}]},{page_title: 'test 1',page_notes: [{note_title: 'title-test 0',note_content: 'content_test 0'},{note_title: 'title-test 1',note_content: 'content_test 22'}]},{page_title: 'test 2',page_notes: [{note_title: 'title-test 2',note_content: 'content_test 2'}]}]
 
   // Data State
   const [pagesData, setPagesData] = useState(pagesDatafromDB)
@@ -41,7 +39,7 @@ function App() {
 
   // Insert new note function
   function updateNewPage() {
-    const updatedPaged = pagesData.map(page => page.id == selectedPage.id ? selectedPage : page)
+    const updatedPaged = pagesData.map(page => page.page_title == selectedPage.page_title ? selectedPage : page)
     setPagesData(updatedPaged)
     
   }
@@ -71,7 +69,6 @@ function App() {
   // Create page handler
   function createPageHandler(title) {
     const newPage = {
-      id: pagesData.length,
       page_title: title,
       page_notes: []
     }
@@ -80,8 +77,8 @@ function App() {
   }
 
   // Delete page handler
-  function deletePageHandler(index,id) {
-    if (selectedPage.id == id) {
+  function deletePageHandler(index,title) {
+    if (selectedPage.page_title == title) {
       selectPageHandler(null)
       setAddisplay(true)
 
@@ -107,7 +104,6 @@ function App() {
   // Create Note handler
   function createNoteHandler(title,content) {
     const newNote = {
-      id: selectedPage.page_notes.length,
       note_title: title,
       note_content: content
     }
@@ -118,11 +114,28 @@ function App() {
   }
 
   // Delete Note handler
-  function deleteNoteHandler(id) {
+  function deleteNoteHandler(index) {
 
-    const deletedNotePage = selectedPage.page_notes.filter(note => note.id != id)
-    setSelectedPage(prevPage => ({...prevPage,page_notes: deletedNotePage}))
+    const deletedNotePage = selectedPage.page_notes.filter((note,i) => i != index)
+    console.log(deletedNotePage);
+    setSelectedPage(prevPage => ({...prevPage, page_notes: deletedNotePage}))
     updateNewPage()
+  }
+
+  // Edit Note handler
+  function editNoteHandler(index,note) {
+    const editedNotePage = selectedPage.page_notes.map((n,i) => i == index ? note : n )
+    const updatedSelectPage = new Promise((resolve,reject) => {
+      resolve(editedNotePage)
+    })
+    updatedSelectPage.then((res) => {
+      console.log(res);
+      setSelectedPage(prevPage => ({...prevPage, page_notes: res}))
+      console.log(selectedPage);
+      updateNewPage()
+      setEditdisplay(null)
+      
+    })
   }
 
 // -----------------------------------------------------------------
@@ -136,7 +149,8 @@ function App() {
         deletepage={deletePageHandler} 
       />
       <Dnotespace 
-        info={info} 
+        pagesData={pagesData}
+        selectedPage={selectedPage}
         closepage={closePageHandler} 
         addnotedisplay={addisplay} 
         addnotebutton={addNoteButtonHandler} 
@@ -144,6 +158,7 @@ function App() {
         deletenote={deleteNoteHandler} 
         editnotedisplay={editdisplay} 
         editnotebutton={editNoteButtonHandler} 
+        editnotehandler={editNoteHandler}
       />
     </div>
   )

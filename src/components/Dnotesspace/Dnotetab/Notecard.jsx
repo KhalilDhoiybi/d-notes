@@ -24,12 +24,12 @@ function Notecard(props) {
 
     //  Edit note state
     const [noteeditor, setNoteeditor] = useState({
-        title: props.info.selectedPage.page_notes[props.index].note_title,
-        content: props.info.selectedPage.page_notes[props.index].note_content
+        title: props.selectedPage.page_notes[props.index].note_title,
+        content: props.selectedPage.page_notes[props.index].note_content
     })
 
-    // note editor handler
-    function noteEditorHandler(event) {
+    // Note editor input handler
+    function noteEditorInputHandler(event) {
 
         const {name, value} = event.target
 
@@ -39,19 +39,25 @@ function Notecard(props) {
             setNoteeditor(prevInput => ({...prevInput, content: value}))
         }
     }
+
+    // Note editor handler
+    function noteEditorHandler() {
+        props.editnotehandler(props.index,noteeditor)
+       
+    }
  
     function NoteCard() {
         return(
             <div className="notecontainer">
                 <div className="notecontent">
-                    <h4>{props.info.selectedPage.page_notes[props.index].note_title}</h4>
-                    <div className='notetext'>{props.info.selectedPage.page_notes[props.index].note_content}</div>
+                    <h4>{props.selectedPage.page_notes[props.index].note_title}</h4>
+                    <div className='notetext'>{props.selectedPage.page_notes[props.index].note_content}</div>
                 </div>
                 <div className="notebuttons">
-                    <IconButton onClick={() => props.editnotebutton(props.id) } aria-label="edit" size="small">
+                    <IconButton onClick={() => props.editnotebutton(props.index) } aria-label="edit" size="small">
                         <EditIcon fontSize="inherit" />
                     </IconButton>
-                    <IconButton onClick={() => props.deletenote(props.id)} aria-label="delete" size="small">
+                    <IconButton onClick={() => props.deletenote(props.index)} aria-label="delete" size="small">
                         <DeleteIcon fontSize="inherit" />
                     </IconButton>
                 </div>
@@ -64,11 +70,11 @@ function Notecard(props) {
             <ThemeProvider theme={theme}>
                 <div className='editnoteform' >
                     <div className='notetitleform'>
-                        <TextField onChange={noteEditorHandler} name="title" id="outlined-basic" label="Note title" variant="outlined" size="small" value={noteeditor.title} />
+                        <TextField onChange={noteEditorInputHandler} name="title" id="outlined-basic" label="Note title" variant="outlined" size="small" value={noteeditor.title} />
                     </div>
                     <div className="notecontentform">
                         <TextField
-                            onChange={noteEditorHandler}
+                            onChange={noteEditorInputHandler}
                             name="content"
                             id="outlined-multiline-static"
                             label="Note content"
@@ -81,7 +87,7 @@ function Notecard(props) {
                         <IconButton onClick={() => props.editnotebutton(null)} aria-label="Back" size="small" >
                             <ArrowBackIcon />
                         </IconButton>
-                        <IconButton aria-label="Done" size="small" >
+                        <IconButton onClick={() => noteEditorHandler()} aria-label="Done" size="small" >
                             <DoneIcon />
                         </IconButton>
                     </div>
@@ -92,7 +98,7 @@ function Notecard(props) {
 
     return(
         <div className='notecard'>
-            {props.editnotedisplay == props.id ? NoteEdit() : NoteCard()}    
+            {props.editnotedisplay == props.index ? NoteEdit() : NoteCard()}    
         </div>
     )
 }

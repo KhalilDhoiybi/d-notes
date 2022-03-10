@@ -6,16 +6,64 @@ import Panel from './Panel/Panel'
 function App() {
 
   // data TEST PROTOTYPE
-  const pagesDatafromDB = [{page_title: 'test 0',page_notes: [{note_title: 'title-test 1',note_content: 'content_test 1'},{note_title: 'title-test 11',note_content: 'content_test 11'},{note_title: 'title-test 111',note_content: 'content_test 111'}]},{page_title: 'test 1',page_notes: [{note_title: 'title-test 0',note_content: 'content_test 0'},{note_title: 'title-test 1',note_content: 'content_test 22'}]},{page_title: 'test 2',page_notes: [{note_title: 'title-test 2',note_content: 'content_test 2'}]}]
+  const IDPmaxFromDB = 3
+  const pagesDataFromDB = [{
+      IDP: 0,
+      page_title: 'TestPage 0',
+      page_notes: [
+        {
+          IDN: 0,
+          note_title: 'TestTitleNote 0',
+          note_content: 'TestNote 0'
+        },
+        {
+          IDN: 1,
+          note_title: 'TestTitleNote 1',
+          note_content: 'TestNote 1'
+        },
+        {
+          IDN: 2,
+          note_title: 'TestTitleNote 2',
+          note_content: 'TestNote 2'
+        }
+      ]
+    },
+    {
+      IDP: 1,
+      page_title: 'TestPage 1',
+      page_notes: [
+        {
+          IDN: 0,
+          note_title: 'TestTitleNote 0',
+          note_content: 'TestNote 0'
+        },
+        {
+          IDN: 1,
+          note_title: 'TestTitleNote 1',
+          note_content: 'TestNote 1'
+        }
+      ]
+    },
+    {
+      IDP: 2,
+      page_title: 'TestPage 2',
+      page_notes: [
+        {
+          IDN: 0,
+          note_title: 'TestTitle 0',
+          note_content: 'TestNote 0'
+        }
+      ]
+    }]
 
   // Data State
-  const [pagesData, setPagesData] = useState(pagesDatafromDB)
+  const [pagesData, setPagesData] = useState(pagesDataFromDB)
+
+  // Pages ID Generator
+  const [IDPG, setIDPG] = useState(IDPmaxFromDB)
 
   // Page selector state
   const [selectedPage, setSelectedPage] = useState(null)
-
-  // Data/State/info object
-  const info = {data: pagesData, selectedPage: selectedPage}
 
   // Add note button display state
   const [addisplay, setAddisplay] = useState(true)
@@ -39,7 +87,7 @@ function App() {
 
   // Insert new note function
   function updateNewPage() {
-    const updatedPaged = pagesData.map(page => page.page_title == selectedPage.page_title ? selectedPage : page)
+    const updatedPaged = pagesData.map(page => page.IDP == selectedPage.IDP ? selectedPage : page)
     setPagesData(updatedPaged)
     
   }
@@ -47,11 +95,11 @@ function App() {
 // ------------------------- Page Handles -------------------------
 
   // Select page handler
-  function selectPageHandler(index) {
+  function selectPageHandler(id) {
     if (selectedPage != null) {
       updateNewPage()
     }
-    setSelectedPage(pagesData[index])
+    setSelectedPage(pagesData.find(page => page.IDP == id))
     setAddisplay(true)
     setEditdisplay(null)
   }
@@ -69,21 +117,22 @@ function App() {
   // Create page handler
   function createPageHandler(title) {
     const newPage = {
+      IDP: IDPG,
       page_title: title,
       page_notes: []
     }
-
-    setPagesData(prevData => [...prevData,newPage])
+    setIDPG(IDPG + 1)
+    setPagesData(prevData => [...prevData, newPage])
   }
 
   // Delete page handler
-  function deletePageHandler(index,title) {
-    if (selectedPage.page_title == title) {
-      selectPageHandler(null)
+  function deletePageHandler(id) {
+    if (selectedPage.IDP == id) {
+      // selectPageHandler(null)
+      setSelectedPage(null)
       setAddisplay(true)
-
     }
-    setPagesData(prevPages => prevPages.filter((page, i) => i != index ))
+    setPagesData(prevPages => prevPages.filter(page => page.IDP != id ))
   }
 
 // ----------------------------------------------------------------
@@ -117,7 +166,6 @@ function App() {
   function deleteNoteHandler(index) {
 
     const deletedNotePage = selectedPage.page_notes.filter((note,i) => i != index)
-    console.log(deletedNotePage);
     setSelectedPage(prevPage => ({...prevPage, page_notes: deletedNotePage}))
     updateNewPage()
   }
@@ -125,17 +173,12 @@ function App() {
   // Edit Note handler
   function editNoteHandler(index,note) {
     const editedNotePage = selectedPage.page_notes.map((n,i) => i == index ? note : n )
-    const updatedSelectPage = new Promise((resolve,reject) => {
-      resolve(editedNotePage)
-    })
-    updatedSelectPage.then((res) => {
-      console.log(res);
-      setSelectedPage(prevPage => ({...prevPage, page_notes: res}))
-      console.log(selectedPage);
-      updateNewPage()
-      setEditdisplay(null)
-      
-    })
+    const newSelectedPage = {...selectedPage, page_notes: editedNotePage}
+    setSelectedPage(newSelectedPage)  
+    updateNewPage()
+    setEditdisplay(null)
+    console.log(selectedPage);
+
   }
 
 // -----------------------------------------------------------------
@@ -143,7 +186,7 @@ function App() {
   return(
     <div className='container'>
       <Panel 
-        info={info} 
+        data={pagesData}
         selectpage={selectPageHandler} 
         createpage={createPageHandler} 
         deletepage={deletePageHandler} 

@@ -6,8 +6,8 @@ import './styles/pageindex.css'
 function Pageindex(props) {
     return(
         <div className='pageindex'>
-            <h4 onClick={() => props.selecthandler(props.index)} >{props.pagename}</h4>
-            <IconButton onClick={() => props.deletehandler(props.index,props.page_title)} aria-label="delete" size="small">
+            <h4 onClick={() => props.selecthandler(props.id)} >{props.pagename}</h4>
+            <IconButton onClick={() => props.deletehandler(props.id)} aria-label="delete" size="small">
                 <DeleteIcon fontSize="inherit" />
             </IconButton>
         </div>

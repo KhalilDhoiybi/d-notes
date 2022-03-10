@@ -24,8 +24,8 @@ function Notecard(props) {
 
     //  Edit note state
     const [noteeditor, setNoteeditor] = useState({
-        title: props.selectedPage.page_notes[props.index].note_title,
-        content: props.selectedPage.page_notes[props.index].note_content
+        note_title: props.selectedPage.page_notes[props.index].note_title,
+        note_content: props.selectedPage.page_notes[props.index].note_content
     })
 
     // Note editor input handler
@@ -34,9 +34,9 @@ function Notecard(props) {
         const {name, value} = event.target
 
         if (name == "title") {
-            setNoteeditor(prevInput => ({...prevInput, title: value}))
+            setNoteeditor(prevInput => ({...prevInput, note_title: value}))
         } else {
-            setNoteeditor(prevInput => ({...prevInput, content: value}))
+            setNoteeditor(prevInput => ({...prevInput, note_content: value}))
         }
     }
 
@@ -50,8 +50,8 @@ function Notecard(props) {
         return(
             <div className="notecontainer">
                 <div className="notecontent">
-                    <h4>{props.selectedPage.page_notes[props.index].note_title}</h4>
-                    <div className='notetext'>{props.selectedPage.page_notes[props.index].note_content}</div>
+                    <h4>{noteeditor.note_title}</h4>
+                    <div className='notetext'>{noteeditor.note_content}</div>
                 </div>
                 <div className="notebuttons">
                     <IconButton onClick={() => props.editnotebutton(props.index) } aria-label="edit" size="small">
@@ -70,7 +70,7 @@ function Notecard(props) {
             <ThemeProvider theme={theme}>
                 <div className='editnoteform' >
                     <div className='notetitleform'>
-                        <TextField onChange={noteEditorInputHandler} name="title" id="outlined-basic" label="Note title" variant="outlined" size="small" value={noteeditor.title} />
+                        <TextField onChange={noteEditorInputHandler} name="title" id="outlined-basic" label="Note title" variant="outlined" size="small" value={noteeditor.note_title} />
                     </div>
                     <div className="notecontentform">
                         <TextField
@@ -80,7 +80,7 @@ function Notecard(props) {
                             label="Note content"
                             multiline
                             size="small"
-                            value={noteeditor.content}
+                            value={noteeditor.note_content}
                         />
                     </div>
                     <div className="notebuttonsform">

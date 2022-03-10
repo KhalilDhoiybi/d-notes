@@ -10,7 +10,8 @@ function Workspace(props) {
             <Fragment>
                 {props.selectedPage.page_notes.map((note,index) => <Notecard 
                     key={index}  
-                    index={index} 
+                    index={index}
+                    pagetitle={props.selectedPage.page_title}
                     {...props} 
                 />)}
                 <Addnote {...props} />                    

@@ -49,14 +49,15 @@ function Addnote(props) {
     // Add new note handler
     function addNewNoteHandler() {
         props.createnote(newNoteInput.note_title,newNoteInput.note_content)
+        props.addnotebutton(true)
         setNewNoteInput({note_title: '',note_content: ''})
         setDoneRender(false)
     }
 
     // Add new note button handler
     function addNewNoteButtonHandler() {
-        setNewNoteInput({note_title: '',note_content: ''})
         props.addnotebutton(false)
+        setNewNoteInput({note_title: '',note_content: ''})
         setDoneRender(false)
     }
     

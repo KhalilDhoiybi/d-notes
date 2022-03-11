@@ -68,8 +68,6 @@ function App() {
   // Add note button display state
   const [addisplay, setAddisplay] = useState(true)
   
-  // Edit note button state NoteID/null
-  const [editdisplay, setEditdisplay] = useState(null)
 
 
 
@@ -96,12 +94,9 @@ function App() {
 
   // Select page handler
   function selectPageHandler(id) {
-    if (selectedPage != null) {
-      updateNewPage()
-    }
+    
     setSelectedPage(pagesData.find(page => page.IDP == id))
     setAddisplay(true)
-    setEditdisplay(null)
   }
 
   // Close page handler
@@ -111,7 +106,6 @@ function App() {
     }
     selectPageHandler(null)
     setAddisplay(true)
-    setEditdisplay(null)
   }
 
   // Create page handler
@@ -127,7 +121,7 @@ function App() {
 
   // Delete page handler
   function deletePageHandler(id) {
-    if (selectedPage.IDP == id) {
+    if ((selectedPage != null)&&(selectedPage.IDP == id)) {
       // selectPageHandler(null)
       setSelectedPage(null)
       setAddisplay(true)
@@ -141,13 +135,6 @@ function App() {
   // Add Note button handler
   function addNoteButtonHandler(change) {
     setAddisplay(change)
-    setEditdisplay(null)
-  }
-
-  // Edit Note button handler
-  function editNoteButtonHandler(change) {
-    setEditdisplay(change)
-    setAddisplay(true)
   }
 
   // Create Note handler
@@ -163,21 +150,21 @@ function App() {
   }
 
   // Delete Note handler
-  function deleteNoteHandler(index) {
+  function deleteNoteHandler(id) {
 
-    const deletedNotePage = selectedPage.page_notes.filter((note,i) => i != index)
+    const deletedNotePage = selectedPage.page_notes.filter((note) => note.IDN != id)
     setSelectedPage(prevPage => ({...prevPage, page_notes: deletedNotePage}))
     updateNewPage()
   }
 
   // Edit Note handler
-  function editNoteHandler(index,note) {
-    const editedNotePage = selectedPage.page_notes.map((n,i) => i == index ? note : n )
+  function editNoteHandler(note) {
+    const editedNotePage = selectedPage.page_notes.map((n) => n.IDN == note.IDN ? note : n )
     const newSelectedPage = {...selectedPage, page_notes: editedNotePage}
-    setSelectedPage(newSelectedPage)  
-    updateNewPage()
-    setEditdisplay(null)
-    console.log(selectedPage);
+    setSelectedPage(newSelectedPage)
+    const updatedPaged = pagesData.map(page => page.IDP == selectedPage.IDP ? newSelectedPage : page)
+    setPagesData(updatedPaged)
+    // TODO DATA BASE EDIT
 
   }
 
@@ -199,8 +186,6 @@ function App() {
         addnotebutton={addNoteButtonHandler} 
         createnote={createNoteHandler} 
         deletenote={deleteNoteHandler} 
-        editnotedisplay={editdisplay} 
-        editnotebutton={editNoteButtonHandler} 
         editnotehandler={editNoteHandler}
       />
     </div>

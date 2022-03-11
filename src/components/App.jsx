@@ -73,8 +73,6 @@ function App() {
   const [addisplay, setAddisplay] = useState(true)
   
 
-
-
   // Data fetching from the api
   // --------------------------------------------------------------
   // const [pages, setPages] = useState([])
@@ -85,14 +83,6 @@ function App() {
   //   })
   // }, [])
   // --------------------------------------------------------------
-
-
-  // Insert new note function
-  function updateNewPage() {
-    const updatedPaged = pagesData.map(page => page.IDP == selectedPage.IDP ? selectedPage : page)
-    setPagesData(updatedPaged)
-    
-  }
 
 // ------------------------- Page Handles -------------------------
 
@@ -117,6 +107,8 @@ function App() {
     }
     setIDPG(IDPG + 1)
     setPagesData(prevData => [...prevData, newPage])
+    // TODO: DATABASE ADD PAGE
+
   }
 
   // Delete page handler
@@ -126,7 +118,7 @@ function App() {
       setAddisplay(true)
     }
     setPagesData(prevPages => prevPages.filter(page => page.IDP != id ))
-    // TODO: DATABASE DELETE NOTE
+    // TODO: DATABASE DELETE PAGE
 
   }
 

@@ -21,8 +21,10 @@ function Addnote(props) {
         }
       })
 
-    const [newNoteInput, setNewNoteInput] = useState({title: '',content: ''})
+    // New note state
+    const [newNoteInput, setNewNoteInput] = useState({note_title: '',note_content: ''})
 
+    // Done button render state
     const [doneRender, setDoneRender] = useState(false)
 
     // New note input handler
@@ -31,28 +33,29 @@ function Addnote(props) {
         const {name, value} = event.target
 
         if (name == "title") {
-            setNewNoteInput(prevInput => ({...prevInput, title: value}))
+            setNewNoteInput(prevInput => ({...prevInput, note_title: value}))
         } else {
-            setNewNoteInput(prevInput => ({...prevInput, content: value}))
+            setNewNoteInput(prevInput => ({...prevInput, note_content: value}))
         }
 
-        if (newNoteInput.title != '' && newNoteInput.content != '' && value) {
+        if (newNoteInput.note_title != '' && newNoteInput.note_content != '' && value) {
             setDoneRender(true)
         } else {
             setDoneRender(false)
         }
+        // TODO: Fix done button render
     }
     
     // Add new note handler
     function addNewNoteHandler() {
-        props.createnote(newNoteInput.title,newNoteInput.content)
-        setNewNoteInput({title: '',content: ''})
+        props.createnote(newNoteInput.note_title,newNoteInput.note_content)
+        setNewNoteInput({note_title: '',note_content: ''})
         setDoneRender(false)
     }
 
     // Add new note button handler
     function addNewNoteButtonHandler() {
-        setNewNoteInput({title: '',content: ''})
+        setNewNoteInput({note_title: '',note_content: ''})
         props.addnotebutton(false)
         setDoneRender(false)
     }
@@ -74,7 +77,15 @@ function Addnote(props) {
             <ThemeProvider theme={theme}>
                 <div className='addnoteform' >
                     <div className='notetitleform'>
-                        <TextField onChange={newNoteIputHandler} name="title" id="outlined-basic" label="Note title" variant="outlined" size="small" value={newNoteInput.title} />
+                        <TextField 
+                            onChange={newNoteIputHandler} 
+                            name="title" 
+                            id="outlined-basic" 
+                            label="Note title" 
+                            variant="outlined" 
+                            size="small" 
+                            value={newNoteInput.note_title} 
+                        />
                     </div>
                     <div className="notecontentform">
                         <TextField
@@ -85,7 +96,7 @@ function Addnote(props) {
                             multiline
                             rows={3}
                             size="small"
-                            value={newNoteInput.content}
+                            value={newNoteInput.note_content}
                         />
                     </div>
                     <div className="notebuttonsform">

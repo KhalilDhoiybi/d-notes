@@ -9,7 +9,7 @@ function Workspace(props) {
         return(
             <Fragment>
                 {props.selectedPage.page_notes.map((note,index) => <Notecard 
-                    key={`${props.selectedPage.IDP}${note.IDN}`}
+                    key={note.IDN}
                     index={index}
                     id={note.IDN}
                     {...props} 

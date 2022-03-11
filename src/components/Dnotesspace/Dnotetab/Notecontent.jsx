@@ -16,7 +16,6 @@ function Notecontent(props) {
                 <IconButton onClick={() => props.edittogglehandler(true)} aria-label="edit" size="small">
                     <EditIcon fontSize="inherit" />
                 </IconButton>
-                {/* TODO: FIX delete Note handler */}
                 <IconButton onClick={() => props.deletenote(props.notecontent.IDN)} aria-label="delete" size="small">
                     <DeleteIcon fontSize="inherit" />
                 </IconButton>

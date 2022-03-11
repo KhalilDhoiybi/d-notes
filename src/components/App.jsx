@@ -122,14 +122,15 @@ function App() {
   // Delete page handler
   function deletePageHandler(id) {
     if ((selectedPage != null)&&(selectedPage.IDP == id)) {
-      // selectPageHandler(null)
       setSelectedPage(null)
       setAddisplay(true)
     }
     setPagesData(prevPages => prevPages.filter(page => page.IDP != id ))
+    // TODO: DATABASE DELETE NOTE
+
   }
 
-// ----------------------------------------------------------------
+// -----------------------------------------------------------------
 
 // ------------------------ Notes Handles --------------------------
   // Add Note button handler
@@ -140,12 +141,18 @@ function App() {
   // Create Note handler
   function createNoteHandler(title,content) {
     const newNote = {
+      IDN: IDNG,
       note_title: title,
       note_content: content
     }
-    
-    setSelectedPage(prevPage => ({...prevPage, page_notes: [...prevPage.page_notes, newNote]}))
-    updateNewPage()
+    setIDNG(IDNG + 1)
+
+    const addedNotePage = [...selectedPage.page_notes, newNote]
+    const newSelectedPage = {...selectedPage, page_notes: addedNotePage}
+    const newPagesData = pagesData.map(page => page.IDP == selectedPage.IDP ? newSelectedPage : page)
+    setSelectedPage(newSelectedPage)
+    setPagesData(newPagesData)
+    // TODO: DATABASE ADD NOTE
 
   }
 
@@ -157,7 +164,7 @@ function App() {
     const newPagesData = pagesData.map(page => page.IDP == selectedPage.IDP ? newSelectedPage : page)
     setSelectedPage(newSelectedPage)
     setPagesData(newPagesData)
-    // TODO: DATA BASE DELETE NOTE
+    // TODO: DATABASE DELETE NOTE
 
   }
 
@@ -168,7 +175,7 @@ function App() {
     const newPagesData = pagesData.map(page => page.IDP == selectedPage.IDP ? newSelectedPage : page)
     setSelectedPage(newSelectedPage)
     setPagesData(newPagesData)
-    // TODO: DATA BASE EDIT NOTE
+    // TODO: DATABASE EDIT NOTE
 
   }
 
@@ -183,7 +190,6 @@ function App() {
         deletepage={deletePageHandler} 
       />
       <Dnotespace 
-        pagesData={pagesData}
         selectedPage={selectedPage}
         closepage={closePageHandler} 
         addnotedisplay={addisplay} 

@@ -7,6 +7,7 @@ function App() {
 
   // data TEST PROTOTYPE
   const IDPmaxFromDB = 3
+  const IDNmaxFromDB = 6
   const pagesDataFromDB = [{
       IDP: 0,
       page_title: 'TestPage 0',
@@ -33,12 +34,12 @@ function App() {
       page_title: 'TestPage 1',
       page_notes: [
         {
-          IDN: 0,
+          IDN: 3,
           note_title: 'TestTitleNote 0',
           note_content: 'TestNote 0'
         },
         {
-          IDN: 1,
+          IDN: 4,
           note_title: 'TestTitleNote 1',
           note_content: 'TestNote 1'
         }
@@ -49,7 +50,7 @@ function App() {
       page_title: 'TestPage 2',
       page_notes: [
         {
-          IDN: 0,
+          IDN: 5,
           note_title: 'TestTitle 0',
           note_content: 'TestNote 0'
         }
@@ -61,6 +62,9 @@ function App() {
 
   // Pages ID Generator
   const [IDPG, setIDPG] = useState(IDPmaxFromDB)
+
+  // Notes ID Generator
+  const [IDNG, setIDNG] = useState(IDNmaxFromDB)
 
   // Page selector state
   const [selectedPage, setSelectedPage] = useState(null)
@@ -94,16 +98,12 @@ function App() {
 
   // Select page handler
   function selectPageHandler(id) {
-    
     setSelectedPage(pagesData.find(page => page.IDP == id))
     setAddisplay(true)
   }
 
   // Close page handler
   function closePageHandler() {
-    if (selectedPage != null) {
-      updateNewPage()      
-    }
     selectPageHandler(null)
     setAddisplay(true)
   }
@@ -153,18 +153,22 @@ function App() {
   function deleteNoteHandler(id) {
 
     const deletedNotePage = selectedPage.page_notes.filter((note) => note.IDN != id)
-    setSelectedPage(prevPage => ({...prevPage, page_notes: deletedNotePage}))
-    updateNewPage()
+    const newSelectedPage = {...selectedPage, page_notes: deletedNotePage}
+    const newPagesData = pagesData.map(page => page.IDP == selectedPage.IDP ? newSelectedPage : page)
+    setSelectedPage(newSelectedPage)
+    setPagesData(newPagesData)
+    // TODO: DATA BASE DELETE NOTE
+
   }
 
   // Edit Note handler
   function editNoteHandler(note) {
     const editedNotePage = selectedPage.page_notes.map((n) => n.IDN == note.IDN ? note : n )
     const newSelectedPage = {...selectedPage, page_notes: editedNotePage}
+    const newPagesData = pagesData.map(page => page.IDP == selectedPage.IDP ? newSelectedPage : page)
     setSelectedPage(newSelectedPage)
-    const updatedPaged = pagesData.map(page => page.IDP == selectedPage.IDP ? newSelectedPage : page)
-    setPagesData(updatedPaged)
-    // TODO DATA BASE EDIT
+    setPagesData(newPagesData)
+    // TODO: DATA BASE EDIT NOTE
 
   }
 

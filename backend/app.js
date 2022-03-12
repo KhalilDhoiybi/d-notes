@@ -77,6 +77,19 @@ app.put('/updateidpg', async (req, res) => {
     })
 })
 
+// PUT ID NOTES GENERATOR REQUEST
+app.put('/updateidng', async (req, res) => {
+    const idng = req.body.IDNG
+
+    IDNG.updateOne({}, {IDNG: idng}, (err, result) => {
+        if (err) {
+            res.json(err)
+        } else {
+            res.json('IDNG has been updated succesfully')
+        }
+    })
+})
+
 
 
 // PAGES END POINTS //

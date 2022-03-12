@@ -64,6 +64,19 @@ app.post('/createidng', async (req, res) => {
     res.json('The new IDNG has been created succsefully')
 })
 
+// PUT ID PAGES GENERATOR REQUEST
+app.put('/updateidpg', async (req, res) => {
+    const idpg = req.body.IDPG
+
+    IDPG.updateOne({}, {IDPG: idpg}, (err, result) => {
+        if (err) {
+            res.json(err)
+        } else {
+            res.json('IDPG has been updated succesfully')
+        }
+    })
+})
+
 
 
 // PAGES END POINTS //

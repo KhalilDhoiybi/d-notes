@@ -65,8 +65,8 @@ app.post('/createidng', async (req, res) => {
 })
 
 // PUT ID PAGES GENERATOR REQUEST
-app.put('/updateidpg', async (req, res) => {
-    const idpg = req.body.IDPG
+app.put('/updateidpg/:newidpg', async (req, res) => {
+    const idpg = req.params.newidpg
 
     IDPG.updateOne({}, {IDPG: idpg}, (err, result) => {
         if (err) {
@@ -78,8 +78,8 @@ app.put('/updateidpg', async (req, res) => {
 })
 
 // PUT ID NOTES GENERATOR REQUEST
-app.put('/updateidng', async (req, res) => {
-    const idng = req.body.IDNG
+app.put('/updateidng/:newidng', async (req, res) => {
+    const idng = req.params.newidng
 
     IDNG.updateOne({}, {IDNG: idng}, (err, result) => {
         if (err) {
@@ -105,13 +105,24 @@ app.get('/Dpages', (req, res) => {
     })
 })
 
-// POST PAGES REQUEST
+// POST PAGE REQUEST
 app.post('/createPage', async (req, res) => {
     const page = req.body
     const newPage = new Dpage(page)
     await newPage.save()
 
     res.json('The new page has been created succsefully')
+})
+
+// DELETE PAGE REQUEST
+app.delete('/deletePage/:idp', (req, res) => {
+    Dpage.deleteOne({IDP: req.params.idp}, (err) => {
+        if (err) {
+            res.json(err)
+        } else {
+            res.json('The page has been deleted succsefully')
+        }
+    })
 })
 
 

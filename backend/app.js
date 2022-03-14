@@ -1,6 +1,9 @@
 const express = require('express')
 const mongoose = require('mongoose')
 const cors = require('cors')
+
+// TODO FIX DATABASE MODEL URGENT  
+
 // DpagesModel
 const Dpage = require('./models/pages.model')
 // dpages id generator model
@@ -64,8 +67,8 @@ app.post('/createidng', async (req, res) => {
     res.json('The new IDNG has been created succsefully')
 })
 
-// PUT ID PAGES GENERATOR REQUEST
-app.put('/updateidpg/:newidpg', async (req, res) => {
+// PATCH ID PAGES GENERATOR REQUEST
+app.patch('/updateidpg/:newidpg', async (req, res) => {
     const idpg = req.params.newidpg
 
     IDPG.updateOne({}, {IDPG: idpg}, (err, result) => {
@@ -77,8 +80,8 @@ app.put('/updateidpg/:newidpg', async (req, res) => {
     })
 })
 
-// PUT ID NOTES GENERATOR REQUEST
-app.put('/updateidng/:newidng', async (req, res) => {
+// PATCH ID NOTES GENERATOR REQUEST
+app.patch('/updateidng/:newidng', async (req, res) => {
     const idng = req.params.newidng
 
     IDNG.updateOne({}, {IDNG: idng}, (err, result) => {
@@ -95,7 +98,7 @@ app.put('/updateidng/:newidng', async (req, res) => {
 // PAGES END POINTS //
 
 // GET PAGES REQUEST
-app.get('/Dpages', (req, res) => {
+app.get('/dpages', (req, res) => {
     Dpage.find({}, (err, result) => {
         if (err) {
             res.json(err)
@@ -123,6 +126,23 @@ app.delete('/deletePage/:idp', (req, res) => {
             res.json('The page has been deleted succsefully')
         }
     })
+})
+
+// NOTES ENDPOINTS //
+
+// PUT NOTE REQUEST
+app.put('/addNote/:idp', async (req, res) => {
+    const note = req.body
+    const idp = req.params.idp
+
+    Dpage.findOneAndUpdate({IDP: idp}, {$push: {page_notes: note}}, (err) => {
+        if (err) {
+            res.json(err)
+        } else {
+            res.json('The new note has been added succsefully')
+        }
+    })
+
 })
 
 

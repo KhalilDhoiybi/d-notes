@@ -1,11 +1,16 @@
 const mongoose = require('mongoose')
-const notes = require('./notes.model')
+const { Schema } = mongoose
+const noteSchema = require('./notes.model')
 
-const pageSchema = new mongoose.Schema({
+
+// Page Schema
+const pageSchema = new Schema({
     IDP: Number,
     page_title: String,
-    page_notes: [notes],
+    page_notes: [noteSchema],
     creation_date: {type: Date, default: Date.now}
 })
 
-module.exports = mongoose.model('Dpage', pageSchema)
+const Dpage = mongoose.model('Dpage', pageSchema)
+
+module.exports = Dpage

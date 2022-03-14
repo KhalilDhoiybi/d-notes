@@ -160,6 +160,27 @@ app.delete('/deleteNote/:idp/:idn', (req, res) => {
     })
 })
 
+// PATCH NOTE REQUEST
+app.patch('/updateNote/:idp/:idn', (req, res) => {
+    const idp = req.params.idp
+    const idn = req.params.idn
+
+    const note = req.body
+
+    Dpage.updateOne({IDP: idp, 'page_notes.IDN': idn}, 
+        {$set: {
+            'page_notes.$.note_title': note.note_title, 
+            'page_notes.$.note_content': note.note_content
+        }}, (err) => {
+
+                if (err) {
+                    res.json(err)
+                } else {
+                    res.json('The note has been edited succsefully')
+                }
+            })
+})
+
 
 
 

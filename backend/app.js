@@ -68,7 +68,7 @@ app.post('/createidng', async (req, res) => {
 })
 
 // PATCH ID PAGES GENERATOR REQUEST
-app.patch('/updateidpg/:newidpg', async (req, res) => {
+app.patch('/updateidpg/:newidpg', (req, res) => {
     const idpg = req.params.newidpg
 
     IDPG.updateOne({}, {IDPG: idpg}, (err, result) => {
@@ -81,7 +81,7 @@ app.patch('/updateidpg/:newidpg', async (req, res) => {
 })
 
 // PATCH ID NOTES GENERATOR REQUEST
-app.patch('/updateidng/:newidng', async (req, res) => {
+app.patch('/updateidng/:newidng', (req, res) => {
     const idng = req.params.newidng
 
     IDNG.updateOne({}, {IDNG: idng}, (err, result) => {
@@ -131,7 +131,7 @@ app.delete('/deletePage/:idp', (req, res) => {
 // NOTES ENDPOINTS //
 
 // PUT NOTE REQUEST
-app.put('/addNote/:idp', async (req, res) => {
+app.put('/addNote/:idp', (req, res) => {
     const note = req.body
     const idp = req.params.idp
 
@@ -143,6 +143,21 @@ app.put('/addNote/:idp', async (req, res) => {
         }
     })
 
+})
+
+// DELETE NOTE REQUEST
+app.delete('/deleteNote/:idp/:idn', (req, res) => {
+    const idp = req.params.idp
+    const idn = req.params.idn
+
+    Dpage.updateOne({IDP: idp}, {$pull: {page_notes: {IDN: idn}}}, (err) => {
+        if (err) {
+            res.json(err)
+        } else {
+            res.json('The note has been deleted succsefully')
+            
+        }
+    })
 })
 
 

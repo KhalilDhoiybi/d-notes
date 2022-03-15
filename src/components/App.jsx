@@ -58,7 +58,7 @@ function App() {
     }]
 
   // Data State
-  const [pagesData, setPagesData] = useState(pagesDataFromDB)
+  const [pagesData, setPagesData] = useState([])
 
   // Pages ID Generator
   const [IDPG, setIDPG] = useState(IDPmaxFromDB)
@@ -75,13 +75,12 @@ function App() {
 
   // Data fetching from the api
   // --------------------------------------------------------------
-  // const [pages, setPages] = useState([])
 
-  // useEffect(() => {
-  //   axios.get('http://localhost:5000/Dpages').then((response) => {
-  //     setPages(response.data)
-  //   })
-  // }, [])
+  useEffect(() => {
+    axios.get('http://localhost:5000/dpages').then((response) => {
+      setPagesData(response.data)
+    })
+  }, [])
   // --------------------------------------------------------------
 
 // ------------------------- Page Handles -------------------------

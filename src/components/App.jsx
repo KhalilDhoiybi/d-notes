@@ -61,10 +61,10 @@ function App() {
   const [pagesData, setPagesData] = useState([])
 
   // Pages ID Generator
-  const [IDPG, setIDPG] = useState(IDPmaxFromDB)
+  const [IDPG, setIDPG] = useState(0)
 
   // Notes ID Generator
-  const [IDNG, setIDNG] = useState(IDNmaxFromDB)
+  const [IDNG, setIDNG] = useState(0)
 
   // Page selector state
   const [selectedPage, setSelectedPage] = useState(null)
@@ -73,14 +73,24 @@ function App() {
   const [addisplay, setAddisplay] = useState(true)
   
 
-  // Data fetching from the api
+  // Data Manipulation from api
   // --------------------------------------------------------------
 
   useEffect(() => {
     axios.get('http://localhost:5000/dpages').then((response) => {
       setPagesData(response.data)
     })
+
+    axios.get('http://localhost:5000/idpg').then((response) => {
+      setIDPG(response.data[0].IDPG)
+    })
+
+    axios.get('http://localhost:5000/idng').then((response) => {
+      setIDNG(response.data[0].IDNG)
+    })
+
   }, [])
+
   // --------------------------------------------------------------
 
 // ------------------------- Page Handles -------------------------

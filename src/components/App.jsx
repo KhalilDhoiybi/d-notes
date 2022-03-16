@@ -131,8 +131,11 @@ function App() {
       setSelectedPage(null)
       setAddisplay(true)
     }
+    // DELETE PAGE FROM DB
+    axios.delete(`http://localhost:5000/deletePage/${id}`)
+
+    // Update states
     setPagesData(prevPages => prevPages.filter(page => page.IDP != id ))
-    // TODO: DATABASE DELETE PAGE
 
   }
 

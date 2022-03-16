@@ -114,11 +114,15 @@ function App() {
       page_title: title,
       page_notes: []
     }
+    // POST NEW PAGE TO DB
+    axios.post('http://localhost:5000/createPage',newPage)
+    // PATCH IDPG IN DB
+    axios.patch(`http://localhost:5000/updateidpg/${IDPG+1}`)
+
+    // Update states
     setIDPG(IDPG + 1)
     setPagesData(prevData => [...prevData, newPage])
-    axios.post('http://localhost:5000/createPage',newPage)
-    // TODO: DATABASE UPDATE IDPG
-
+    
   }
 
   // Delete page handler

@@ -174,12 +174,15 @@ function App() {
   // Delete Note handler
   function deleteNoteHandler(id) {
 
+    // DELETE NOTE FROM DB
+    axios.delete(`http://localhost:5000/deleteNote/${selectedPage.IDP}/${id}`)
+
+    // Update states
     const deletedNotePage = selectedPage.page_notes.filter((note) => note.IDN != id)
     const newSelectedPage = {...selectedPage, page_notes: deletedNotePage}
     const newPagesData = pagesData.map(page => page.IDP == selectedPage.IDP ? newSelectedPage : page)
     setSelectedPage(newSelectedPage)
     setPagesData(newPagesData)
-    // TODO: DATABASE DELETE NOTE
 
   }
 

@@ -116,7 +116,7 @@ function App() {
     }
     // POST NEW PAGE TO DB
     axios.post('http://localhost:5000/createPage',newPage)
-    // PATCH IDPG IN DB
+    // PATCH IDPG FROM DB
     axios.patch(`http://localhost:5000/updateidpg/${IDPG+1}`)
 
     // Update states
@@ -154,14 +154,20 @@ function App() {
       note_title: title,
       note_content: content
     }
-    setIDNG(IDNG + 1)
 
+    // PUT NEW NOTE TO DB
+    axios.put(`http://localhost:5000/addNote/${selectedPage.IDP}`,newNote)
+
+    // PATCH IDNG FROM DB
+    axios.patch(`http://localhost:5000/updateidng/${IDNG+1}`)
+
+    // Update states
+    setIDNG(IDNG + 1)
     const addedNotePage = [...selectedPage.page_notes, newNote]
     const newSelectedPage = {...selectedPage, page_notes: addedNotePage}
     const newPagesData = pagesData.map(page => page.IDP == selectedPage.IDP ? newSelectedPage : page)
     setSelectedPage(newSelectedPage)
     setPagesData(newPagesData)
-    // TODO: DATABASE ADD NOTE
 
   }
 

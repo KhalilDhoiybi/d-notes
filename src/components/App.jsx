@@ -188,12 +188,16 @@ function App() {
 
   // Edit Note handler
   function editNoteHandler(note) {
+
+    // PATCH NOTE FROM DB
+    axios.patch(`http://localhost:5000/updateNote/${selectedPage.IDP}/${note.IDN}`,note)
+
+    // Update states
     const editedNotePage = selectedPage.page_notes.map((n) => n.IDN == note.IDN ? note : n )
     const newSelectedPage = {...selectedPage, page_notes: editedNotePage}
     const newPagesData = pagesData.map(page => page.IDP == selectedPage.IDP ? newSelectedPage : page)
     setSelectedPage(newSelectedPage)
     setPagesData(newPagesData)
-    // TODO: DATABASE EDIT NOTE
 
   }
 

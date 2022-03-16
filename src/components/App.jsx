@@ -5,58 +5,6 @@ import Panel from './Panel/Panel'
 
 function App() {
 
-  // data TEST PROTOTYPE
-  const IDPmaxFromDB = 3
-  const IDNmaxFromDB = 6
-  const pagesDataFromDB = [{
-      IDP: 0,
-      page_title: 'TestPage 0',
-      page_notes: [
-        {
-          IDN: 0,
-          note_title: 'TestTitleNote 0',
-          note_content: 'TestNote 0'
-        },
-        {
-          IDN: 1,
-          note_title: 'TestTitleNote 1',
-          note_content: 'TestNote 1'
-        },
-        {
-          IDN: 2,
-          note_title: 'TestTitleNote 2',
-          note_content: 'TestNote 2'
-        }
-      ]
-    },
-    {
-      IDP: 1,
-      page_title: 'TestPage 1',
-      page_notes: [
-        {
-          IDN: 3,
-          note_title: 'TestTitleNote 0',
-          note_content: 'TestNote 0'
-        },
-        {
-          IDN: 4,
-          note_title: 'TestTitleNote 1',
-          note_content: 'TestNote 1'
-        }
-      ]
-    },
-    {
-      IDP: 2,
-      page_title: 'TestPage 2',
-      page_notes: [
-        {
-          IDN: 5,
-          note_title: 'TestTitle 0',
-          note_content: 'TestNote 0'
-        }
-      ]
-    }]
-
   // Data State
   const [pagesData, setPagesData] = useState([])
 

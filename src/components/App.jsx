@@ -116,8 +116,8 @@ function App() {
     }
     setIDPG(IDPG + 1)
     setPagesData(prevData => [...prevData, newPage])
-    // TODO: DATABASE ADD PAGE
     axios.post('http://localhost:5000/createPage',newPage)
+    // TODO: DATABASE UPDATE IDPG
 
   }
 
